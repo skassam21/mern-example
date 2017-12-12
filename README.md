@@ -8,7 +8,7 @@ This starter project also uses:
 - **Passport** and **Javascript Web Tokens** (JWT) for authentication (username + password)
 - **React-router** for using routes in the frontend 
 - **Bootstrap** for responsive CSS design
-= **Mongoose** as an ODM for mongodb
+- **Mongoose** as an ODM for mongodb
 
 
 ## Quickstart
