@@ -1,0 +1,112 @@
+@import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../../../node_modules/font-awesome/css/font-awesome.css';
+@import '../variables.scss';
+
+/*
+ * Base styles
+ * ========================================================================== */
+
+a, h1, h2, h3, h4, h5, h6, button {
+  font-family: $font-family-headings;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+p {
+  font-family: $font-family-base;
+  font-size: 16px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+a.btn-primary {
+  background-color: $dark-blue;
+  border-color: $dark-blue;
+}
+
+button.btn-primary {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid $dark-blue;
+  font-family: 100;
+  color: $dark-blue;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+button.btn-primary:hover {
+  border-radius: 3px;
+}
+
+
+button.btn-back.btn-primary:hover {
+  background: black;
+}
+
+button.btn-primary:hover, button.btn-primary:active, button.btn-primary:focus {
+  color: white;
+  background: $dark-blue;
+}
+
+/*
+ * Landing Page
+ * ========================================================================== */
+
+input.form-control.landing-page-form {
+  font-family: $font-family-headings;
+  font-weight: 300;
+  border: 1px solid #eaeaea;
+  border-radius: 2px;
+  box-shadow: none;
+  background-color: #fafafa;
+}
+
+input.form-control.landing-page-form.has-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #f2dede;
+}
+
+input.form-control.landing-page-form.has-error:focus {
+  border-color: #a94442;
+}
+
+input.form-control.landing-page-form:focus {
+  border-color: #aaa;
+}
+
+input::-webkit-input-placeholder {
+color: #aaa !important;
+font-weight: 300;
+font-family: $font-family-headings;
+}
+ 
+input:-moz-placeholder { /* Firefox 18- */
+color: #aaa !important;  
+font-family: $font-family-headings;
+font-weight: 300;
+}
+ 
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #aaa !important;  
+font-family: $font-family-headings;
+font-weight: 300;
+}
+ 
+input:-ms-input-placeholder {  
+color: #aaa !important;  
+font-family: $font-family-headings;
+font-weight: 300;
+}
