@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "debug": "nodemon ./server/server.js --config nodeman.json",
     "build_frontend": "node ./node_modules/webpack/bin/webpack.js",
-    "lint": "eslint client/components/App/App.jsx"
+    "lint": "eslint --ext .jsx,.js client server"
   },
   "author": "",
   "license": "ISC",

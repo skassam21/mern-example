@@ -19,7 +19,7 @@ class Login extends Component {
   }
 
   handleInputChange(event) {
-    const { value, name } = event;
+    const { value, name } = event.target;
 
     this.setState({
       [name]: value,
@@ -70,21 +70,21 @@ class Login extends Component {
               type="text"
               name="username"
               placeholder="Username"
-              onChange={this.handleInputChange}
+              handleChange={this.handleInputChange}
             />
             <InputElement
               type="text"
               name="username"
               placeholder="Username"
-              onChange={this.handleInputChange}
+              handleChange={this.handleInputChange}
             />
             <AlertMessage message={this.state.errorMessage} alertType="danger" />
             <button type="submit" className="btn btn-primary">LOGIN</button>
           </form>
           <div>
             <p style={accountStyle}>
-              Don&apos;t have an account?
-              <button onClick={this.showSignUp}>
+              Don&apos;t have an account?&nbsp;
+              <button type="button" className="btn-link" onClick={this.showSignUp}>
                 Sign up
               </button>
             </p>

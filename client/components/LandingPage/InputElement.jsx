@@ -16,12 +16,17 @@ function InputElement(props) {
   );
 }
 
+InputElement.defaultProps = {
+  handleInputChange: null,
+  handleBlur: null,
+};
+
 InputElement.propTypes = {
-  name: PropTypes.string.isRequired, 
+  name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func,
-  handleBlur: PropTypes.func
+  handleBlur: PropTypes.func,
 };
 
 export default InputElement;

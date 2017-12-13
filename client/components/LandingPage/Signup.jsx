@@ -28,7 +28,8 @@ class Signup extends Component {
   }
 
   handleInputChange(event) {
-    const { target, value, name } = event;
+    const { target } = event;
+    const { value, name } = target;
     const targetObj = $(target);
 
     if (name === 'username') {
@@ -55,7 +56,8 @@ class Signup extends Component {
   }
 
   handleBlur(event) {
-    const { target, value, name } = event;
+    const { target } = event;
+    const { value, name } = target;
     const targetObj = $(target);
 
     if (name === 'email') {
@@ -158,35 +160,35 @@ class Signup extends Component {
               type="text"
               name="username"
               placeholder="Username"
-              onChange={this.handleInputChange}
+              handleChange={this.handleInputChange}
             />
             <InputElement
               type="text"
               name="name"
               placeholder="Full Name"
-              onChange={this.handleInputChange}
+              handleChange={this.handleInputChange}
             />
             <InputElement
               type="text"
               name="email"
               placeholder="Email"
-              onChange={this.handleInputChange}
-              onBlur={this.handleBlur}
+              handleChange={this.handleInputChange}
+              handleBlur={this.handleBlur}
             />
             <InputElement
               type="password"
               name="password"
               placeholder="Password"
-              onChange={this.handleInputChange}
-              onBlur={this.handleBlur}
+              handleChange={this.handleInputChange}
+              handleBlur={this.handleBlur}
             />
             <AlertMessage message={this.state.errorMessage} alertType="danger" />
             <button type="submit" className="btn btn-primary">SIGNUP</button>
           </form>
           <div>
             <p style={accountStyle}>
-              Have an account?
-              <button onClick={this.showLogin}>
+              Have an account?&nbsp;
+              <button type="button" className="btn-link" onClick={this.showLogin}>
                 Login
               </button>
             </p>
