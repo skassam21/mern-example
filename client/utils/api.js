@@ -3,80 +3,68 @@ import Storage from './storage';
 const TOKEN = 'JWToken';
 const USER = 'User';
 
-var Api = {
-  login: function(username, password) {
+class Api {
+  static login(username, password) {
+    return this.authenticateUserCall('/api/login', {
+      username,
+      password,
+    });
+  }
+
+  static signup(username, name, email, password) {
+    return this.authenticateUserCall('/api/signup', {
+      username,
+      name,
+      email,
+      password,
+    });
+  }
+
+  static authenticateUserCall(url, data) {
     return new Promise((resolve, reject) => {
       $.ajax({
-        url: '/api/login',
+        url,
         method: 'post',
-        data: {
-          username: username, 
-          password: password
-        }, 
-        success: function(data, status) {
-          if (data.success) {
-            Storage.set(TOKEN, data.token);
-            Storage.set(USER, data.user);
-            resolve(data);
+        data,
+        success(response) {
+          if (response.success) {
+            Storage.set(TOKEN, response.token);
+            Storage.set(USER, response.user);
+            resolve(response);
           } else {
-            reject({error: data.message});
+            reject(new Error(response.message));
           }
         },
-        error: function(xhr, status, err) {
-          reject({'error': err});
+        error(xhr, status, err) {
+          reject(new Error(err));
         },
       });
     });
-  },
-  signup: function(username, name, email, password) {
+  }
+
+  static authCall(method, url, data) {
     return new Promise((resolve, reject) => {
-      $.ajax({
-        url: '/api/signup',
-        method: 'post',
-        data: {
-          username: username,
-          name: name,
-          email: email, 
-          password: password
-        }, 
-        success: function(data, status) {
-          if (data.success) {
-            Storage.set(TOKEN, data.token);
-            Storage.set(USER, data.user);
-            resolve(data);
-          } else {
-            reject({error: data.message});
-          }
-        },
-        error: function(xhr, status, err) {
-          reject({'error': err});
-        },
-      });
-    });
-  },
-  authCall: function(method, url, data) {
-    return new Promise((resolve, reject) => {
-      let token = Storage.get(TOKEN);
+      const token = Storage.get(TOKEN);
       if (!token) {
-        reject({'error': 'unauthorized'});
+        reject(new Error('unauthorized'));
       } else {
         $.ajax({
-          url: url, 
-          data: data,
-          json: true, 
-          method: method,
+          url,
+          data,
+          json: true,
+          method,
           headers: {
-            'Authorization': 'Bearer ' + token
+            Authorization: `Bearer ${token}`,
           },
-          success: function(data, status) {
-            if (status == 401 || status == 403) {
-              reject({'error': 'unauthorized'});
+          success: (response, status) => {
+            if (status === 401 || status === 403) {
+              reject(new Error('unauthorized'));
             }
-            resolve(data);
+            resolve(response);
           },
-          error: function(xhr, status, err) {
-            reject({'error': err});
-          }
+          error: (xhr, status, err) => {
+            reject(new Error(err));
+          },
         });
       }
     });

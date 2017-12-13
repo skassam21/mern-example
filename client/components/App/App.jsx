@@ -1,34 +1,27 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
 import { Route } from 'react-router';
 import { HashRouter, Switch } from 'react-router-dom';
 import LandingPage from './../LandingPage/LandingPage';
-import s from './App.scss';
+import s from './App.scss'; // eslint-disable-line no-unused-vars
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+function App() {
+  const backgroundStyle = {
+    width: '100%',
+    minHeight: '100vh',
+    height: '100%',
+    backgroundColor: '#fafafa',
+    backgroundAttachment: 'fixed',
+  };
 
-  render() {
-    let backgroundStyle = {
-      width: '100%',
-      minHeight: '100vh',
-      height: '100%',
-      backgroundColor: '#fafafa',
-      backgroundAttachment: 'fixed'
-    }
-
-    return (
-      <div style={backgroundStyle}>
-        <HashRouter>
-          <Switch>
-            <Route exact path="/" component={LandingPage}/>
-          </Switch>
-        </HashRouter>
-      </div>
-    )
-  }
+  return (
+    <div style={backgroundStyle}>
+      <HashRouter>
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+        </Switch>
+      </HashRouter>
+    </div>
+  );
 }
 
 export default App;

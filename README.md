@@ -1,4 +1,4 @@
-# MERN Example
+# MERN Starter Code
 
 This project contains starter code for a Mongo, Express, React, Node application. It's purpose is for beginners to get familiar with using the MERN stack to build a simple web application that requires a login screen. 
 
@@ -18,8 +18,8 @@ This starter project also uses:
 2. In the root directory of the app, run: 
 
 ```sh
-npm install
-npm run debug
+yarn
+yarn debug
 ```
 
 
@@ -28,7 +28,7 @@ npm run debug
 1. Build the frontend application for deployment:
 
 ```sh
-npm run build_frontend
+yarn build_frontend
 ```
 
 2. To deploy to heroku: 
